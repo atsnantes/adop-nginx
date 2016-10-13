@@ -11,11 +11,11 @@
                         "link": "/jenkins/"
                     },
                     {
-                        "id": "gerrit",
-                        "title": "gerrit",
-                        "img": "img/gerrit.jpg",
-                        "description": "Git Repository Management & Code Review Tool",
-                        "link": "/gerrit/"
+                        "id": "bitbucket",
+                        "title": "bitbucket",
+                        "img": "img/bitbucket.png",
+                        "description": "Git Repository Management",
+                        "link": "/bitbucket/"
                     },
                     {
                         "id": "sonar",
