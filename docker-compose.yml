@@ -1,0 +1,33 @@
+version: '2'
+services:
+
+ proxy:
+  container_name: proxy
+  build: .
+  image: atsnantes/adop-nginx-dev:latest
+  ports:
+    - "80:80"
+    - "443:443"
+  environment:
+    - "constraint:tier==public"
+    - "LDAP_SERVER=ldap:389"
+    - "LDAP_USERNAME=cn=admin,dc=ldap,dc=example,dc=com"
+    - "LDAP_PASSWORD=8a0da851f1564006"
+    - "LDAP_USER_BASE_DN=ou=people,dc=ldap,dc=example,dc=com"
+    - "LDAP_GROUP_ATTRIBUTE=member"
+    - "LDAP_USER_ID_ATTRIBUTE=cn"
+    - "LDAP_USER_OBJECT_CLASS=inetOrgPerson"
+  volumes:
+    - nginx_config:/etc/nginx
+    - nginx_releasenote:/usr/share/nginx/html
+    
+volumes:
+  nginx_config:
+    driver: local
+  nginx_releasenote:
+    driver: local
+    
+networks:
+  default:
+    external:
+      name: local_network
